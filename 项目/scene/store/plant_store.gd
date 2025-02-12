@@ -21,7 +21,7 @@ func dir_plants_res(path):
 					plants_res_array.append(resource)
 			file_name = dir.get_next()
 	else:
-		print("尝试访问路径时出错。")
+		print("尝试访问路径时出错")
 		
 	plants_res_array.sort_custom(sort_by_price)
 	for plant_res:PlantRes in plants_res_array:
