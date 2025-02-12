@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=4 uid="uid://6nm01ietei48"]
+
+[ext_resource type="PackedScene" uid="uid://dq58ev50g43t0" path="res://scene/plot/plot.tscn" id="1_2d7mx"]
+[ext_resource type="FontFile" uid="uid://dlak0nfshxnuy" path="res://texture/Kenney Mini.ttf" id="2_2x8xl"]
+[ext_resource type="Script" path="res://scene/store/plant_store.gd" id="3_0fuu3"]
+[ext_resource type="PackedScene" uid="uid://bf6ktmotnntc6" path="res://scene/tool/tool_button.tscn" id="4_ukqip"]
+[ext_resource type="Resource" uid="uid://b8s4uq7txlq48" path="res://resources/tools/water_tool_res.tres" id="5_23kdx"]
+[ext_resource type="Resource" uid="uid://bpc7ypcqgyvrv" path="res://resources/tools/fertilizing_tool_res.tres" id="6_oqhj0"]
+[ext_resource type="Resource" uid="uid://de6f6nxvbrtvu" path="res://resources/tools/buyplot_tool_res.tres" id="7_ehrs0"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s8m2c"]
+scenes/1/scene = ExtResource("1_2d7mx")
+
+[sub_resource type="TileSet" id="TileSet_vsnt5"]
+tile_size = Vector2i(99, 74)
+sources/1 = SubResource("TileSetScenesCollectionSource_s8m2c")
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-101, 68)
+scale = Vector2(0.3, 0.3)
+tile_map_data = PackedByteArray("AAANAAUAAQAAAAAAAQAKAAcAAQAAAAAAAQAQAAcAAQAAAAAAAQANAAkAAQAAAAAAAQAHAAkAAQAAAAAAAQATAAkAAQAAAAAAAQAQAAsAAQAAAAAAAQAKAAsAAQAAAAAAAQANAA0AAQAAAAAAAQAEAAsAAQAAAAAAAQAWAAsAAQAAAAAAAQATAA0AAQAAAAAAAQAQAA8AAQAAAAAAAQAHAA0AAQAAAAAAAQAKAA8AAQAAAAAAAQANABEAAQAAAAAAAQA=")
+tile_set = SubResource("TileSet_vsnt5")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Store" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 717.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="UI/Store"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StoreTitle" type="Label" parent="UI/Store"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 301.0
+offset_bottom = 75.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_2x8xl")
+theme_override_font_sizes/font_size = 40
+text = "Plant Store"
+
+[node name="MoneyText" type="Label" parent="UI/Store" groups=["MoenyLabel"]]
+layout_mode = 2
+offset_left = 309.0
+offset_top = 20.0
+offset_right = 415.0
+offset_bottom = 75.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_2x8xl")
+theme_override_font_sizes/font_size = 40
+text = "￥xxx"
+
+[node name="PlantStore" type="MarginContainer" parent="UI/Store"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 86.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Store/PlantStore"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="PlantStore" type="VBoxContainer" parent="UI/Store/PlantStore/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+script = ExtResource("3_0fuu3")
+
+[node name="ToolStore" type="MarginContainer" parent="UI/Store"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 494.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Store/ToolStore"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="WaterButton" parent="UI/Store/ToolStore/HBoxContainer" instance=ExtResource("4_ukqip")]
+layout_mode = 2
+tool_res = ExtResource("5_23kdx")
+
+[node name="FertilizingButton2" parent="UI/Store/ToolStore/HBoxContainer" instance=ExtResource("4_ukqip")]
+layout_mode = 2
+tool_res = ExtResource("6_oqhj0")
+
+[node name="BuyPlotButton3" parent="UI/Store/ToolStore/HBoxContainer" instance=ExtResource("4_ukqip")]
+layout_mode = 2
+tool_res = ExtResource("7_ehrs0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(564, 296)
+zoom = Vector2(0.8, 0.8)

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="PlantRes" load_steps=10 format=3 uid="uid://by4ns57t5e7yp"]
+
+[ext_resource type="Script" path="res://scene/plant/plant_res.gd" id="1_5sb6q"]
+[ext_resource type="Texture2D" uid="uid://hsj074toae2o" path="res://texture/Farm Items Extra.png" id="1_6rm3n"]
+[ext_resource type="Texture2D" uid="uid://cdc20gimoe0fl" path="res://texture/Farm Items.png" id="1_islb7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj23b"]
+atlas = ExtResource("1_6rm3n")
+region = Rect2(0, 580, 340, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwnw8"]
+atlas = ExtResource("1_islb7")
+region = Rect2(1300, 1470, 190, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hw4l"]
+atlas = ExtResource("1_islb7")
+region = Rect2(0, 900, 340, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diey5"]
+atlas = ExtResource("1_islb7")
+region = Rect2(470, 810, 340, 260)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hak0"]
+atlas = ExtResource("1_islb7")
+region = Rect2(960, 740, 360, 650)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7n8e"]
+atlas = ExtResource("1_islb7")
+region = Rect2(1420, 710, 380, 680)
+
+[resource]
+script = ExtResource("1_5sb6q")
+plantName = "SunFlower"
+plantStageTextures = Array[Texture]([SubResource("AtlasTexture_5hw4l"), SubResource("AtlasTexture_diey5"), SubResource("AtlasTexture_5hak0"), SubResource("AtlasTexture_v7n8e")])
+timeBtwStages = 5
+buyPrice = 10
+sellPrice = 15
+icon = SubResource("AtlasTexture_nwnw8")
+dryPlanted = SubResource("AtlasTexture_yj23b")

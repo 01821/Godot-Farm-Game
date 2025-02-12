@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf6ktmotnntc6"]
+
+[ext_resource type="Script" path="res://scene/tool/tool_button.gd" id="1_0cmar"]
+[ext_resource type="Texture2D" uid="uid://hsj074toae2o" path="res://texture/Farm Items Extra.png" id="1_vag6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpavc"]
+atlas = ExtResource("1_vag6v")
+region = Rect2(1400, 20, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu8yb"]
+atlas = ExtResource("1_vag6v")
+region = Rect2(880, 560, 140, 180)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nivsq"]
+
+[node name="ToolButton" type="Control"]
+custom_minimum_size = Vector2(70, 114)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_0cmar")
+
+[node name="IconBackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = SubResource("AtlasTexture_lpavc")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="IconBackGround"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -22.5
+offset_right = 17.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_wu8yb")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="IconBackGround"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nivsq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nivsq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nivsq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nivsq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nivsq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nivsq")
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -34.0
+offset_right = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "￥0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="IconBackGround/Button" to="." method="_on_button_pressed"]

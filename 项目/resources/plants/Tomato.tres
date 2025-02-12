@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="PlantRes" load_steps=10 format=3 uid="uid://bfbyakgu5qb11"]
+
+[ext_resource type="Texture2D" uid="uid://hsj074toae2o" path="res://texture/Farm Items Extra.png" id="1_lffq2"]
+[ext_resource type="Texture2D" uid="uid://cdc20gimoe0fl" path="res://texture/Farm Items.png" id="1_p6gb7"]
+[ext_resource type="Script" path="res://scene/plant/plant_res.gd" id="2_pywh4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feoqq"]
+atlas = ExtResource("1_lffq2")
+region = Rect2(360, 580, 340, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blvh1"]
+atlas = ExtResource("1_p6gb7")
+region = Rect2(1540, 1470, 160, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4j3y"]
+atlas = ExtResource("1_p6gb7")
+region = Rect2(0, 1220, 340, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eweku"]
+atlas = ExtResource("1_p6gb7")
+region = Rect2(470, 1140, 340, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msq2j"]
+atlas = ExtResource("1_p6gb7")
+region = Rect2(0, 1450, 340, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48jkx"]
+atlas = ExtResource("1_p6gb7")
+region = Rect2(470, 1450, 340, 340)
+
+[resource]
+script = ExtResource("2_pywh4")
+plantName = "Tomato"
+plantStageTextures = Array[Texture]([SubResource("AtlasTexture_l4j3y"), SubResource("AtlasTexture_eweku"), SubResource("AtlasTexture_msq2j"), SubResource("AtlasTexture_48jkx")])
+timeBtwStages = 10
+buyPrice = 15
+sellPrice = 20
+icon = SubResource("AtlasTexture_blvh1")
+dryPlanted = SubResource("AtlasTexture_feoqq")

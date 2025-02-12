@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq58ev50g43t0"]
+
+[ext_resource type="Script" path="res://scene/manager/plot_manager.gd" id="1_u3xje"]
+[ext_resource type="Texture2D" uid="uid://hsj074toae2o" path="res://texture/Farm Items Extra.png" id="2_56fw4"]
+[ext_resource type="Texture2D" uid="uid://cdc20gimoe0fl" path="res://texture/Farm Items.png" id="6_bi4uw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj50r"]
+atlas = ExtResource("2_56fw4")
+region = Rect2(0, 20, 660, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwpjt"]
+atlas = ExtResource("6_bi4uw")
+region = Rect2(0, 20, 660, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngnxj"]
+atlas = ExtResource("2_56fw4")
+region = Rect2(690, 20, 660, 490)
+
+[node name="Plot" type="Node2D" node_paths=PackedStringArray("plant")]
+script = ExtResource("1_u3xje")
+plant = NodePath("Plant")
+normalColor = Color(1, 1, 1, 1)
+activeColor = Color(2, 2, 2, 1)
+dryTexture = SubResource("AtlasTexture_nj50r")
+normalTexture = SubResource("AtlasTexture_jwpjt")
+unavailableTexture = SubResource("AtlasTexture_ngnxj")
+
+[node name="plotTexture" type="Sprite2D" parent="."]
+texture = ExtResource("6_bi4uw")
+region_enabled = true
+region_rect = Rect2(0, 20, 664, 492)
+
+[node name="Plant" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -318)
+region_rect = Rect2(960, 740, 360, 650)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-3.33333, -210, 243.333, -76.6667, 0, 43.3333, -253.333, -76.6667)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

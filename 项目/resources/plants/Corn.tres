@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PlantRes" load_steps=10 format=3 uid="uid://e0q1vx21bn33"]
+
+[ext_resource type="Texture2D" uid="uid://hsj074toae2o" path="res://texture/Farm Items Extra.png" id="1_5vltk"]
+[ext_resource type="Texture2D" uid="uid://qml31dp5ld6q" path="res://resources/Corn/1.tres" id="1_82j3m"]
+[ext_resource type="Texture2D" uid="uid://cdc20gimoe0fl" path="res://texture/Farm Items.png" id="1_be305"]
+[ext_resource type="Texture2D" uid="uid://bxaowcxfbru7e" path="res://resources/Corn/2.tres" id="2_mn8ue"]
+[ext_resource type="Texture2D" uid="uid://o7elr2tgv0uy" path="res://resources/Corn/3.tres" id="3_8fc6g"]
+[ext_resource type="Texture2D" uid="uid://2wk1xicx8v13" path="res://resources/Corn/4.tres" id="4_jhaow"]
+[ext_resource type="Script" path="res://scene/plant/plant_res.gd" id="5_r50uw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v3ud"]
+atlas = ExtResource("1_5vltk")
+region = Rect2(0, 580, 340, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8qht"]
+atlas = ExtResource("1_be305")
+region = Rect2(1520, 1700, 170, 150)
+
+[resource]
+script = ExtResource("5_r50uw")
+plantName = "Corn"
+plantStageTextures = Array[Texture]([ExtResource("1_82j3m"), ExtResource("2_mn8ue"), ExtResource("3_8fc6g"), ExtResource("4_jhaow")])
+timeBtwStages = 2
+buyPrice = 5
+sellPrice = 10
+icon = SubResource("AtlasTexture_d8qht")
+dryPlanted = SubResource("AtlasTexture_6v3ud")

@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5c7s2oh4xxtg"]
+
+[ext_resource type="Texture2D" uid="uid://cdc20gimoe0fl" path="res://texture/Farm Items.png" id="1_nnb8r"]
+[ext_resource type="Script" path="res://scene/plant/plantItem/plant_item.gd" id="1_w4g0k"]
+[ext_resource type="FontFile" uid="uid://dlak0nfshxnuy" path="res://texture/Kenney Mini.ttf" id="2_k712m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd2l7"]
+atlas = ExtResource("1_nnb8r")
+region = Rect2(1010, 1490, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqj0k"]
+atlas = ExtResource("1_nnb8r")
+region = Rect2(1520, 1700, 170, 150)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pp3sb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aayb0"]
+bg_color = Color(0.19, 0.7, 0.4, 1)
+
+[node name="PlantItem" type="Control"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 395.0
+offset_bottom = 80.0
+script = ExtResource("1_w4g0k")
+
+[node name="IconBackGround" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_nd2l7")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="IconBackGround"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_uqj0k")
+expand_mode = 1
+
+[node name="PlantName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -279.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_k712m")
+theme_override_font_sizes/font_size = 34
+text = "Corn"
+
+[node name="PlantPrice" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_k712m")
+theme_override_font_sizes/font_size = 24
+text = "￥xxx"
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pp3sb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aayb0")
+text = "Buy"
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]
