@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://clkvn23qc7mx3"]
+
+[ext_resource type="Texture2D" uid="uid://dguh1dewfnwre" path="res://texture/Farm Items Extra.png" id="1_hhp7q"]
+[ext_resource type="Script" path="res://scene/UI/tool/tool_item.gd" id="1_ym70g"]
+[ext_resource type="FontFile" uid="uid://b728l4dyxoj31" path="res://texture/Kenney Mini.ttf" id="3_6uoao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64v57"]
+atlas = ExtResource("1_hhp7q")
+region = Rect2(1400, 20, 240, 240)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nogjm"]
+
+[node name="ToolItem" type="Control" groups=["ToolItem"]]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ym70g")
+
+[node name="IconBackground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = SubResource("AtlasTexture_64v57")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="IconBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -22.5
+offset_right = 17.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="IconBackground"]
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 81.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nogjm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nogjm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nogjm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nogjm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nogjm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nogjm")
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -1.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_6uoao")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="IconBackground/Button" to="." method="_on_button_pressed"]

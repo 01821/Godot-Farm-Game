@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToolRes" load_steps=6 format=3 uid="uid://bq6105swjro5t"]
+
+[ext_resource type="Texture2D" uid="uid://dguh1dewfnwre" path="res://texture/Farm Items Extra.png" id="1_nspwo"]
+[ext_resource type="Script" path="res://scene/UI/tool/tool_res.gd" id="2_56anw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgnv6"]
+atlas = ExtResource("1_nspwo")
+region = Rect2(1170, 570, 180, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxgi4"]
+atlas = ExtResource("1_nspwo")
+region = Rect2(1400, 20, 240, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_caip0"]
+atlas = ExtResource("1_nspwo")
+region = Rect2(1400, 300, 240, 240)
+
+[resource]
+script = ExtResource("2_56anw")
+tool_type = 2
+icon = SubResource("AtlasTexture_fgnv6")
+price = 15
+not_select_icon_bg = SubResource("AtlasTexture_qxgi4")
+select_icon_bg = SubResource("AtlasTexture_caip0")

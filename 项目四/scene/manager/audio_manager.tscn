@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpe6fnxf5trb"]
+
+[ext_resource type="Script" path="res://scene/manager/audio_manager.gd" id="1_ocfs7"]
+[ext_resource type="AudioStream" uid="uid://bhwaq6pmrc3xc" path="res://audio/water_splash_1_1.wav" id="2_tfa2p"]
+[ext_resource type="AudioStream" uid="uid://c87x8d0w55fvn" path="res://audio/matches_handle_1_11.wav" id="3_5o0sl"]
+[ext_resource type="AudioStream" uid="uid://egltwirqjcql" path="res://audio/arrow_hit_1_1_cut.wav" id="4_fasst"]
+[ext_resource type="AudioStream" uid="uid://0ermff4raals" path="res://audio/欢快游戏背景音乐_爱给网_aigei_com.mp3" id="5_b8vfl"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_ocfs7")
+
+[node name="Water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tfa2p")
+
+[node name="Fertilize" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5o0sl")
+
+[node name="BuyPlot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fasst")
+volume_db = 10.0
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b8vfl")

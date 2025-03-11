@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://48pske7gi54m"]
+
+[ext_resource type="Script" path="res://scene/plot/plot.gd" id="1_62u51"]
+[ext_resource type="Texture2D" uid="uid://dguh1dewfnwre" path="res://texture/Farm Items Extra.png" id="2_s1aym"]
+[ext_resource type="Texture2D" uid="uid://d0o337llu3c74" path="res://texture/Farm Items.png" id="3_3higj"]
+[ext_resource type="Script" path="res://scene/plot/tip_panel.gd" id="4_tllrq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7byio"]
+atlas = ExtResource("2_s1aym")
+region = Rect2(0, 20, 660, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrldq"]
+atlas = ExtResource("3_3higj")
+region = Rect2(0, 20, 660, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unqou"]
+atlas = ExtResource("2_s1aym")
+region = Rect2(690, 20, 660, 490)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhw6o"]
+atlas = ExtResource("3_3higj")
+region = Rect2(0, 20, 664, 492)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m6dl"]
+bg_color = Color(0, 0, 0, 0.784314)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+
+[node name="Plot" type="Node2D"]
+script = ExtResource("1_62u51")
+no_watered_texture = SubResource("AtlasTexture_7byio")
+watered_texture = SubResource("AtlasTexture_lrldq")
+unavailable_texture = SubResource("AtlasTexture_unqou")
+activeColor = Color(2, 2, 2, 1)
+normalColor = Color(1, 1, 1, 1)
+
+[node name="PlotSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_xhw6o")
+
+[node name="PlantSprite" type="Sprite2D" parent="."]
+region_rect = Rect2(470, 810, 340, 260)
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="ClickArea"]
+modulate = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, -200, -242.5, -80, -5, 42.5, 247.5, -82.5)
+
+[node name="TipPanel" type="PanelContainer" parent="."]
+z_index = 1
+offset_left = 39.0
+offset_top = -190.0
+offset_right = 236.0
+offset_bottom = -76.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1m6dl")
+script = ExtResource("4_tllrq")
+
+[node name="Sprite2D" type="Sprite2D" parent="TipPanel"]
+position = Vector2(73, 16)
+scale = Vector2(0.457143, 0.457143)
+texture = ExtResource("2_s1aym")
+centered = false
+region_enabled = true
+region_rect = Rect2(880, 560, 140, 180)
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]
