@@ -1,4 +1,4 @@
-class_name PlantItem extends Control
+class_name PlantItem extends Item
 
 @export var plant_res:PlantRes
 
@@ -8,8 +8,7 @@ class_name PlantItem extends Control
 @onready var buy_button: Button = $BuyButton
 
 func _ready() -> void:
-	FarmManager.clear_plant_item_state.connect(update_button_state)
-
+	super()
 '''更新资源'''
 func update_res():
 	if plant_res:
@@ -18,8 +17,7 @@ func update_res():
 		plant_price.text = "$" + str(plant_res.price)
 
 func _on_buy_button_pressed() -> void:
-	FarmManager._clear_tool_item_state()
-	update_button_state()
+	FarmManager._clear_all_item_state(plant_res)
 	if FarmManager.select_plant_res != plant_res:
 		FarmManager.select_plant_res = plant_res
 		buy_button.text = "Cancel"
@@ -28,7 +26,7 @@ func _on_buy_button_pressed() -> void:
 		buy_button.text = "Buy"
 		
 	
-func update_button_state():
+func _clear_all_item_state():
 	var plant_items = get_tree().get_nodes_in_group("PlantItem")
 	for plant_item : PlantItem in plant_items:
 		plant_item.buy_button.text = "Buy"

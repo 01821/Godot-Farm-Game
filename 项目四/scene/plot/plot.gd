@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 func _on_click_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_released("left_click"):
 		if not is_planted and FarmManager.select_plant_res:
-			if FarmManager.select_plant_res.price > FarmManager.money and not is_bought: return
+			if FarmManager.select_plant_res.price > FarmManager.money or not is_bought:
+				return
 			_plant()
 		elif is_planted and plant_stage == len(plant_res.plantStageTexture) -1:
 			_harvest()

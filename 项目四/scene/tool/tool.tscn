@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2kx5c4ed3ch4"]
+
+[ext_resource type="Script" path="res://scene/tool/tool.gd" id="1_26il8"]
+
+[node name="Tool" type="Sprite2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_26il8")
